@@ -1,0 +1,23 @@
+﻿@page
+@model Pets.Pages.RemoveModel
+@{
+}
+
+<h1>Remove Pet</h1>
+
+<h2>
+    Are you sure you want to remove this pet?
+</h2>
+
+<p>
+    <img src="/uploads/@Model.Pet.PhotoFileName" class="img-fluid" />
+</p>
+
+<form method="post">
+    <input type="hidden" name="Pet.PetId" value="@Model.Pet.PetId" />
+
+    <p>
+        <input type="submit" value="Remove" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;
+        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    </p>
+</form>

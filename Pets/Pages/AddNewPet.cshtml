@@ -1,0 +1,34 @@
+﻿@page
+@model Pets.Pages.AddNewPetModel
+@{
+}
+
+<h1>Add New Pet</h1>
+<div class="w-25">
+
+    <!-- Add multipart/form-data to upload file(s) -->
+
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="FileUpload" class="form-label">Photo:</label><br>
+            <input asp-for="FileUpload" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Pet.Name" class="form-label">Name:</label><br>
+            <input asp-for="Pet.Name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Pet.Age">Age:</label><br>
+            <input asp-for="Pet.Age" class="form-control" />
+        </div>
+
+        <p>
+            <input type="submit" value="Submit" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+        </p>
+    </form>
+
+</div>

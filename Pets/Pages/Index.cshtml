@@ -7,20 +7,38 @@
 
 <h1>Pets</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(Pet pet in Model.pets)
-        {
+<p>
+    <a asp-page="AddNewPet" class="btn btn-secondary">Add New Pet</a>
+</p>
+
+<div class="w-50">
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @pet.Name
-                </td>
-            </tr>    
-        }
-    </tbody>
-</table>
+                <th></th>
+                <th>Name</th>
+                <th>Age</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Pet pet in Model.pets)
+            {
+                <tr>
+                    <td>
+                        <img src="/uploads/@pet.PhotoFileName" class="img-fluid" />
+                    </td>
+                    <td>
+                        @pet.Name
+                    </td>
+                    <td>
+                        @pet.Age
+                    </td>
+                    <td>
+                        <a asp-page="Remove" asp-route-id="@pet.PetId">Remove</a>
+                    </td>
+                </tr>    
+            }
+        </tbody>
+    </table>
+</div>
