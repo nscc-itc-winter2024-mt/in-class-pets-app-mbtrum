@@ -153,5 +153,37 @@ namespace Pets.Data
 
             connection.Close();
         }
+    
+        // Update an existing pet in the table
+        public static void UpdatePet(Pet Pet)
+        {
+            // Create connection to database
+            SqliteConnection connection = new SqliteConnection("Data Source= Data/database.db");
+
+            // Open the connection
+            connection.Open();
+
+            // Run SQL to remove pet from pet table
+            // Use command parameters to add the user's input to the SQL
+            string sql = "UPDATE Pet SET Name=@Name, Age=@Age, PhotoFileName=@PhotoFileName WHERE PetId = @PetId";
+
+            SqliteCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = sql;
+
+            // Basically do a find and replace in the sql string
+            cmd.Parameters.AddWithValue("@PetId", Pet.PetId);
+            cmd.Parameters.AddWithValue("@Name", Pet.Name);
+            cmd.Parameters.AddWithValue("@Age", Pet.Age);
+            cmd.Parameters.AddWithValue("@PhotoFileName", Pet.PhotoFileName);
+
+            // Execute the command
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+        }
+    
     }
+
+
 }

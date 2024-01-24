@@ -1,20 +1,23 @@
 ﻿@page
-@model Pets.Pages.AddNewPetModel
+@model Pets.Pages.UpdateModel
 @{
 }
 
-<h1>Add New Pet</h1>
+<h1>Update Pet</h1>
+
+<div class="w-25">
+    <img src="/uploads/@Model.Pet.PhotoFileName" class="img-fluid" />
+</div>
+
 <div class="w-50">
 
     <!-- Add multipart/form-data to upload file(s) -->
-
     <form method="post" enctype="multipart/form-data">
 
-        <div class="mb-3">
-            <label asp-for="FileUpload" class="form-label"></label><br>
-            <input asp-for="FileUpload" class="form-control" />
-            <span asp-validation-for="FileUpload" class="text-danger"></span>
-        </div>
+        <!-- Inlcude ALL the properties of pet obeject -->
+        <input asp-for="Pet.PetId" type="hidden" />
+        <input asp-for="Pet.PhotoFileName" type="hidden" />
+
 
         <div class="mb-3">
             <label asp-for="Pet.Name" class="form-label"></label><br>
@@ -26,6 +29,12 @@
             <label asp-for="Pet.Age"></label><br>
             <input asp-for="Pet.Age" class="form-control" />
             <span asp-validation-for="Pet.Age" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="FileUpload" class="form-label"></label><br>
+            <input asp-for="FileUpload" class="form-control" />
+            <span asp-validation-for="FileUpload" class="text-danger"></span>
         </div>
 
         <p>
